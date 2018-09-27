@@ -95,17 +95,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomHelperClasses\TimeFormatNCompare.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpeechModel.cs" />
     <Compile Include="Models\TimeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Commands\AddNewContentCmd.cs" />
+    <Compile Include="ViewModels\Commands\DictationModeCmd.cs" />
+    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\Converters\DateTimeToStringConverter.cs" />
     <Compile Include="ViewModels\Converters\TimeSpanToStringConverter.cs" />
     <Compile Include="ViewModels\Converters\DateTimeToTimeSpanToConverter.cs" />
     <Compile Include="ViewModels\Converters\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SpeechViewModel.cs" />
+    <Compile Include="ViewModels\TimeViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\EditContentPage.xaml.cs">
+      <DependentUpon>EditContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC_DayPart_0.xaml.cs">
+      <DependentUpon>UC_DayPart_0.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -122,6 +136,83 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Speech\SSML\IT\5000_CSharp.xml" />
+    <Content Include="Speech\SSML\IT\5200_MVVM.xml" />
+    <Content Include="Speech\SSML\IT\5300_SQL.xml" />
+    <Content Include="Speech\SSML\IT\5400_Wpf.xml" />
+    <Content Include="Speech\SSML\IT\5500_UWP.xml" />
+    <Content Include="Speech\SSML\IT\5700_HTML_CSS_JQ.xml" />
+    <Content Include="Speech\SSML\IT\5800_MVC_ASPNET.xml" />
+    <Content Include="Speech\SSML\IT\5900_WCF_WebSrvs.xml" />
+    <Content Include="Speech\SSML\IT\en-ES\SecondPersonPlural\FU_Phase1_mb_1_0.xml" />
+    <Content Include="Speech\SSML\IT\en-ES\SecondPersonSingular\PRS_Components.xml" />
+    <Content Include="Speech\SSML\Routine\9100_FloorPlanRoutine.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonPlural\00_MMM.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\00_MMM.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\10_DayPart1.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\20_DayPart2.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\30_DayPart3_MentPrep.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\55_PreCrunchTime.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\90_MMM_Eve.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\EnglishTemplate.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_DT_Asshole.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_HardSell.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_mb_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_mb_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_mb_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_mb_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase1_mb_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DirtyTalk.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_2_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_2_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_2_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_2_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase2_DT_mb_2_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosingAndLogistcs.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosKBLog_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosKBLog_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosKBLog_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosKBLog_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonPlural\FU_Phase3_ClosKBLog_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\EnglishTemplate.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_DT_Asshole.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase0_PointToPoint.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_HardSell.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_mb_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_mb_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_mb_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_mb_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase1_mb_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DirtyTalk.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_2_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_2_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_2_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_2_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase2_DT_mb_2_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosingAndLogistics.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosKBLog_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosKBLog_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosKBLog_1_4.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosKBLog_1_6.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Phase3_ClosKBLog_1_8.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Sweeper4_AskThemAside.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Sweeper4_TakeAside_mb_1_0.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Sweeper4_TakeAside_mb_1_2.xml" />
+    <Content Include="Speech\SSML\SED\en-ES\2ndPersonSingular\FU_Sweeper4_TakeAside_mb_1_4.xml" />
+    <Content Include="Speech\SSML\Templates\CultureTemplates\en-US\EnglishTemplate.xml" />
+    <Content Include="Speech\SSML\Templates\CultureTemplates\es-MX\PlantillaDeEspañol.xml" />
+    <Content Include="Speech\SSML\Templates\CultureTemplates\ru-RU\РусскийШаблон.xml" />
+    <Content Include="Speech\SSML\UsageSyntax.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -132,13 +223,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EditContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UC_DayPart_0.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Speech\SSML\IT\es-MX\1SegundaPersonaSingular\" />
+    <Folder Include="Speech\SSML\IT\es-MX\SegundaPersonaPlural\" />
+    <Folder Include="Speech\SSML\IT\ru-RU\1ВторойЛицаEдинственногоИсла\" />
+    <Folder Include="Speech\SSML\IT\ru-RU\ВторойЛицаMножественногоИсла\" />
+    <Folder Include="Speech\SSML\Routine\es-MX\SegundaPersonaPlural\" />
+    <Folder Include="Speech\SSML\Routine\es-MX\SegundaPersonaSingular\" />
+    <Folder Include="Speech\SSML\Routine\ru-RU\ВторойЛицаEдинственногоИсла\" />
+    <Folder Include="Speech\SSML\Routine\ru-RU\ВторойЛицаMножественногоИсла\" />
+    <Folder Include="Speech\SSML\SED\en-ES\Other\" />
+    <Folder Include="Views\UsrControls\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

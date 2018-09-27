@@ -7,59 +7,193 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:m="using:Models"
     xmlns:vm="using:ViewModels"
+    xmlns:uc="using:Views.UsrControls"
     xmlns:converters="using:ViewModels.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Page.DataContext>
-        <m:TimeModel/>
+        <vm:TimeViewModel/>
     </Page.DataContext>
-
     <Page.Resources>
         <vm:MainViewModel x:Key="mainViewModel"/>
+        <vm:SpeechViewModel x:Key="speechViewModel"/>
+        <vm:TimeViewModel x:Key="timeViewModel"/>
+        <m:SpeechModel x:Key="speechModel"/>
         <converters:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
         <converters:DateTimeToDateTimeOffsetConverter x:Key="dateTimeToDateTimeOffsetConverter"/>
         <converters:DateTimeToTimeSpanConverter x:Key="dateTimeToTimeSpanConverter"/>
         <converters:TimeSpanToStringConverter x:Key="timeSpanToStringConverter"/>
         <converters:DateTimeToStringConverter x:Key="dateTimeToStringConverter"/>
     </Page.Resources>
-
     <StackPanel Background="Black">
-        <!--Time="{Binding SomeDateTimeTimeSpanProxy, Mode=TwoWay}"-->
-        <TimePicker x:Name="playTimePicker" 
-                    Time="{Binding tsPlayTime}"                    
-                    FontSize="28" Foreground="Ivory"
-                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                    Height="Auto" Width="Auto"
-                    Margin="2 40 0 0"/>
-        
-        <TextBlock Text="{Binding tsPlayTime, 
-                            Converter={StaticResource timeSpanToStringConverter}}"        
-                FontSize="28" Foreground="Ivory"
+        <StackPanel x:Name="stpPlayOne" Orientation="Horizontal"
+            DataContext="{Binding Source={StaticResource timeViewModel}}">
+            <TextBlock Text="{Binding CurrentTime}"
+                FontSize="30" Foreground="Ivory"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                Height="40" Width="200"
-                Margin="20 20 0 0"/>
-
-        <TextBlock Text="{Binding sPlayTime}"        
-                FontSize="28" Foreground="Orange"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Height="40" Width="200"
-                Margin="20 20 0 0"/>
-
-        <StackPanel>
+                Height="45" Width="170"
+                Margin="20 15 0 0"/>
             <DatePicker Date="{Binding SomeDateTime
              ,Converter={StaticResource dateTimeToDateTimeOffsetConverter}
-             ,Mode=TwoWay}"                  
-                Header="SomeDateTime Date" 
+             ,Mode=TwoWay}"                                                      
                         Foreground="Ivory" FontSize="28"
-                        Width="Auto"/>
-            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy, Mode=TwoWay}"
+                        Width="Auto"
+                        Margin="160 15 0 0"/>
+        </StackPanel>
+        <!--Sub Header--><!--
+        <StackPanel  Height="55">
+            <TextBlock  Text="{Binding IsMatch}" HorizontalAlignment="Center" 
+                        Foreground="Ivory" FontSize="34"
+                        Width="90" Height="40"
+                        Margin="0 10 570 0"/>
+        </StackPanel>-->
+          
+        <!--Main Body-->  
+        <!--Day Part 0 MMM-->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_0, Mode=TwoWay}"
                 Header="SomeDateTime Time" 
                         Foreground="Ivory" FontSize="28"
                         Width="Auto" Margin="0 5"/>
-            <TextBlock  Text="{Binding SomeDateTime}" 
+            <TextBlock  Text="{Binding SomeDateTime_0}" 
                         Foreground="Ivory" FontSize="28"
-                        Width="Auto" Margin="5 10 0 0"/>
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 0" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="Set Mind" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="MMM" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
         </StackPanel>
+        <!--Day Part 1 Up the Gut-->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_1, Mode=TwoWay}"
+                Header="SomeDateTime Time" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Margin="0 5"/>
+            <TextBlock  Text="{Binding SomeDateTime_1}" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 1" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="1st Run" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="Up the Gut" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
+        </StackPanel>
+        <!--Day Part 2 Gut Cont -->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_2, Mode=TwoWay}"
+                Header="SomeDateTime Time" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Margin="0 5"/>
+            <TextBlock  Text="{Binding SomeDateTime_2}" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 2" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="2nd Run" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="Gut Cont" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
+        </StackPanel>
+        <!--Day Part 3  Ment Prep-->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_3, Mode=TwoWay}"
+                Header="SomeDateTime Time" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Margin="0 5"/>
+            <TextBlock  Text="{Binding SomeDateTime_3}" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 3" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="3rd Run" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="Ment Prep" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
+        </StackPanel>
+        <!--Day Part 4 - 55_PreCrunchTime-->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_4, Mode=TwoWay}"
+                Header="SomeDateTime Time" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Margin="0 5"/>
+            <TextBlock  Text="{Binding SomeDateTime_4}" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 4" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="4th Run" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="Pre-Crunch" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
+        </StackPanel>
+        <!--Day Part 9 MMM Eve-->
+        <StackPanel Orientation="Horizontal">
+            <TimePicker Time="{Binding SomeDateTimeTimeSpanProxy_5, Mode=TwoWay}"
+                Header="SomeDateTime Time" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Margin="0 5"/>
+            <TextBlock  Text="{Binding SomeDateTime_5}" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="Auto" Height="40"
+                        Margin="15 40 0 0"
+                        Visibility="Collapsed"/>
+            <TextBlock  Text="Day Part 9" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="100 40 0 0"/>
+            <TextBlock  Text="Wind down" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="70 40 0 0"/>
+            <TextBlock  Text="MMM Eve" 
+                        Foreground="Ivory" FontSize="28"
+                        Width="150" Height="40"
+                        Margin="40 40 0 0"/>
+        </StackPanel>
+
+        <!--<uc:UC_DayPart_0/>-->
     </StackPanel>
 </Page>
