@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomHelperClasses\TimeFormatNCompare.cs" />
+    <Compile Include="HelperClasses\CondenseDay.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -120,14 +121,31 @@
     <Compile Include="Views\UC_DayPart_0.xaml.cs">
       <DependentUpon>UC_DayPart_0.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UsrControls\UC_ADDFile.xaml.cs">
+      <DependentUpon>UC_ADDFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsrControls\UC_Mood.xaml.cs">
+      <DependentUpon>UC_Mood.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsrControls\UC_PlayGroup.xaml.cs">
+      <DependentUpon>UC_PlayGroup.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\AV\HeyThereDelilah.m4p" />
+    <None Include="Assets\AV\HoneyImGood.m4p" />
+    <None Include="Assets\AV\Took_Pill_Ibiza.m4p" />
     <None Include="ConvertersSoloApp5_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AV\Danzig_Mother.mp3" />
+    <Content Include="Assets\AV\FullMetJack_30s.WMV" />
+    <Content Include="Assets\AV\Relax_SusanDavis.mp3" />
+    <Content Include="Assets\AV\Thunder.m4a" />
+    <Content Include="Assets\Images\PRS_Logo_Scale-100-70x70.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -149,6 +167,12 @@
     <Content Include="Speech\SSML\Routine\9100_FloorPlanRoutine.xml" />
     <Content Include="Speech\SSML\Routine\en-ES\2ndPersonPlural\00_MMM.xml" />
     <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\00_MMM.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\04_Workout.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\03_Run.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\05_ProgPlan1st.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\02_SED-Outloud.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\06_ListenSuzan.xml" />
+    <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\PlaySet_0000\01_Alarm.xml" />
     <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\10_DayPart1.xml" />
     <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\20_DayPart2.xml" />
     <Content Include="Speech\SSML\Routine\en-ES\2ndPersonSingular\30_DayPart3_MentPrep.xml" />
@@ -231,6 +255,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UsrControls\UC_ADDFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UsrControls\UC_Mood.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UsrControls\UC_PlayGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -238,6 +274,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\PlayLibray\PlayList\" />
     <Folder Include="Speech\SSML\IT\es-MX\1SegundaPersonaSingular\" />
     <Folder Include="Speech\SSML\IT\es-MX\SegundaPersonaPlural\" />
     <Folder Include="Speech\SSML\IT\ru-RU\1ВторойЛицаEдинственногоИсла\" />
@@ -247,7 +284,6 @@
     <Folder Include="Speech\SSML\Routine\ru-RU\ВторойЛицаEдинственногоИсла\" />
     <Folder Include="Speech\SSML\Routine\ru-RU\ВторойЛицаMножественногоИсла\" />
     <Folder Include="Speech\SSML\SED\en-ES\Other\" />
-    <Folder Include="Views\UsrControls\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

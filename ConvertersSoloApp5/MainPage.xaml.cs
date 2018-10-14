@@ -25,5 +25,11 @@ namespace ConvertersSoloApp5
                 view.TryEnterFullScreenMode();
             }
         }
+
+        private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MenuFlyoutItem selectedItemFlyout = sender as MenuFlyoutItem;
+            selectedItem.Text = "Selected item is " + selectedItemFlyout.Text.ToString();
+        }
     }
 }

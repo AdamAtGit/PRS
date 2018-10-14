@@ -156,7 +156,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/00_MMM.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/01_Alarm.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -202,7 +202,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/10_DayPart1.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/02_SED-Outloud.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -248,7 +248,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/20_DayPart2.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/03_Run.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -294,7 +294,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/30_DayPart3_MentPrep.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/04_WorkOut.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -340,7 +340,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/55_PreCrunchTime.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/05_ProgPlan1st.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -386,7 +386,7 @@ namespace ViewModels
             {
                 if (speechModel.IsCmdMode != true)
                 {
-                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/90_MMM_Eve.xml";
+                    path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/PlaySet_0000/06_ListenSuzan.xml";
                     StorageFile ssmlFile = await StorageFile.GetFileFromApplicationUriAsync(
                     new Uri(path));
                     await this.SpeakSsmlFileAsync(
@@ -508,7 +508,6 @@ namespace ViewModels
             }
         }
 
-
         //Expression style prop 
         public String dtCurrentTime => dto.ToString("T");
         public String CurrentTime => dto.ToString("T");
@@ -540,7 +539,7 @@ namespace ViewModels
             if (DesignMode.DesignModeEnabled)
             {
                 Path = "ms-appx:///Speech/SSML/Routine/en-ES/2ndPersonSingular/";
-                // SomeDateTime = DateTime.Now.AddMinutes(1);//DateTime.Parse("09/2/2018 2:00PM");
+                SomeDateTime = DateTime.Now.AddMinutes(1);//DateTime.Parse("09/2/2018 2:00PM");
                 tsIntv = new TimeSpan(0, 0, INTERVAL_IN_SECONDS);
                 timer = new DispatcherTimer();
                 timer.Interval = tsIntv;
@@ -565,6 +564,7 @@ namespace ViewModels
             }
             else
             {
+                SomeDateTime = DateTime.Now.AddMinutes(1);//For DatePicker
                 tsIntv = new TimeSpan(0, 0, INTERVAL_IN_SECONDS);
                 timer = new DispatcherTimer();
                 timer.Interval = tsIntv;
@@ -693,6 +693,35 @@ namespace ViewModels
         }
 
         #region  SomeDateTime & SomeDateTimeDateTimeProxy
+        #region For DatePicker  
+        private DateTime someDateTime;
+        public DateTime SomeDateTime
+        {
+            get { return someDateTime; }
+            set
+            {
+                someDateTime = value;
+                RaisePropertyChanged("SomeDateTime");// **Note- no need for multiple someDateTimes???
+            }
+        }
+        public TimeSpan SomeDateTimeTimeSpanProxy
+        {
+            //Extract timespan from orig datetime
+            get => someDateTime - someDateTime.Date;
+            set
+            {
+                //check if timespan is different from current value
+                if (SomeDateTimeTimeSpanProxy != value)
+                {
+                    //If it is, set the original datetime
+                    //to the original date, plus the new timespan value
+                    SomeDateTime = someDateTime.Date.Add(value);
+                    //Raise the PropertyChanged event for the timespan property
+                    RaisePropertyChanged("SomeDateTimeTimeSpanProxy");
+                }
+            }
+        }
+        #endregion
 
         #region 0  
         private DateTime someDateTime_0;
