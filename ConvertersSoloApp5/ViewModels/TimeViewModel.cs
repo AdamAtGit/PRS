@@ -608,32 +608,94 @@ namespace ViewModels
 
             #region Find Match          
             sTimePickerTime_0 = SomeDateTimeTimeSpanProxy_0.ToString("T");
-            sOut_0 = tfnC_0.TimeStringFormatter(sTimePickerTime_0);//*Note was   sOut_0 = tfnC.TimeStringF...
-            isMatch_0 = tfnC_0.TimesMatched(sOut_0, CurrentTime);//*Note was  isMatch_0 = tfnC.TimesMatch...
+            sOut_0 = tfnC_0.TimeStringFormatter(sTimePickerTime_0);
+            string sub_0 = sOut_0.Substring(6, 2);
+            if (sub_0 != "00")
+            {
+                sOut_0 = sOut_0.Remove(6, 10);// --> "9:27: PM"          
+                string endChars_0;
+                int len_0 = sOut_0.Length - 2;
+                endChars_0 = sOut_0.Substring(len_0, 2);// --> "PM"
+                len_0 = sOut_0.Length - 3;
+                string holding_0 = sOut_0.Remove(len_0, 3);// --> "9:27:"
+                sOut_0 = holding_0 + "00 " + endChars_0;// --> "9:27:00 PM"             
+            }
+            isMatch_0 = tfnC_0.TimesMatched(sOut_0, CurrentTime);
 
             sTimePickerTime_1 = SomeDateTimeTimeSpanProxy_1.ToString("T");
             sOut_1 = tfnC_1.TimeStringFormatter(sTimePickerTime_1);
+            string sub_1 = sOut_1.Substring(6, 2);
+            if (sub_1 != "00")
+            {
+                sOut_1 = sOut_1.Remove(6, 10);
+                string endChars_1;
+                int len_1 = sOut_1.Length - 2;
+                endChars_1 = sOut_1.Substring(len_1, 2);
+                len_1 = sOut_1.Length - 3;
+                string holding_1 = sOut_1.Remove(len_1, 3);
+                sOut_1 = holding_1 + "00 " + endChars_1;
+            }
             isMatch_1 = tfnC_1.TimesMatched(sOut_1, CurrentTime);
 
             sTimePickerTime_2 = SomeDateTimeTimeSpanProxy_2.ToString("T");
             sOut_2 = tfnC_2.TimeStringFormatter(sTimePickerTime_2);
+            string sub_2 = sOut_2.Substring(6, 2);
+            if (sub_2 != "00")
+            {
+                sOut_2 = sOut_2.Remove(6, 10);
+                string endChars_2;
+                int len_2 = sOut_2.Length - 2;
+                endChars_2 = sOut_2.Substring(len_2, 2);
+                len_2 = sOut_2.Length - 3;
+                string holding_2 = sOut_2.Remove(len_2, 3);
+                sOut_2 = holding_2 + "00 " + endChars_2;
+            }
             isMatch_2 = tfnC_2.TimesMatched(sOut_2, CurrentTime);
-
-
-
 
             sTimePickerTime_3 = SomeDateTimeTimeSpanProxy_3.ToString("T");
             sOut_3 = tfnC_3.TimeStringFormatter(sTimePickerTime_3);
+            string sub_3 = sOut_3.Substring(6, 2);
+            if (sub_3 != "00")
+            {
+                sOut_3 = sOut_3.Remove(6, 10);
+                string endChars_3;
+                int len_3 = sOut_3.Length - 2;
+                endChars_3 = sOut_3.Substring(len_3, 2);
+                len_3 = sOut_3.Length - 3;
+                string holding_3 = sOut_3.Remove(len_3, 3);
+                sOut_3 = holding_3 + "00 " + endChars_3;
+            }
             isMatch_3 = tfnC_3.TimesMatched(sOut_3, CurrentTime);
 
-            sTimePickerTime_4 = SomeDateTimeTimeSpanProxy_4.ToString("T");
+            sTimePickerTime_4 = SomeDateTimeTimeSpanProxy_4.ToString("T");          
             sOut_4 = tfnC_4.TimeStringFormatter(sTimePickerTime_4);
+            string sub_4 = sOut_4.Substring(6, 2);
+            if (sub_4 != "00")
+            {
+                sOut_4 = sOut_4.Remove(6, 10);       
+                string endChars_4;
+                int len_4 = sOut_4.Length - 2;
+                endChars_4 = sOut_4.Substring(len_4, 2);
+                len_4 = sOut_4.Length - 3;
+                string holding_4 = sOut_4.Remove(len_4, 3);
+                sOut_4 = holding_4 + "00 " + endChars_4;             
+            }
             isMatch_4 = tfnC_4.TimesMatched(sOut_4, CurrentTime);
 
             sTimePickerTime_5 = SomeDateTimeTimeSpanProxy_5.ToString("T");
             sOut_5 = tfnC_5.TimeStringFormatter(sTimePickerTime_5);
+            string sub_5 = sOut_5.Substring(6, 2);
+            if (sub_5 != "00")
+            {
+                sOut_5 = sOut_5.Remove(6, 10);
+                string endChars_5;
+                int len_5 = sOut_5.Length - 2;
+                endChars_5 = sOut_5.Substring(len_5, 2);
+                len_5 = sOut_5.Length - 3;
+                string holding_5 = sOut_5.Remove(len_5, 3);
+                sOut_5 = holding_5 + "00 " + endChars_5;
+            }
             isMatch_5 = tfnC_5.TimesMatched(sOut_5, CurrentTime);
-
 
 
             if (isMatch_0 == true)
